@@ -33,7 +33,7 @@ public class BookCursorAdapter extends CursorAdapter {
         TextView supplierPhoneTextView = (TextView) view.findViewById(R.id.supplier_phone);
         Button shopView = (Button) view.findViewById(R.id.sale);
 
-        final int idColumnIndex = cursor.getColumnIndex(BookEntry._ID);
+        int idColumnIndex = cursor.getColumnIndex(BookEntry._ID);
         int nameColumnIndex = cursor.getColumnIndex(BookEntry.COLUMN_PRODUCT_NAME);
         int priceColumnIndex = cursor.getColumnIndex(BookEntry.COLUMN_PRICE);
         int quantityColumnIndex = cursor.getColumnIndex(BookEntry.COLUMN_QUANTITY);
@@ -41,7 +41,7 @@ public class BookCursorAdapter extends CursorAdapter {
         int supplierPhoneColumnIndex = cursor.getColumnIndex(BookEntry.COLUMN_SUPPLIER_PHONE);
 
 
-
+        final int bookId = cursor.getInt(idColumnIndex);
         String name = cursor.getString(nameColumnIndex);
         String price = cursor.getString(priceColumnIndex);
         final int quantity = cursor.getInt(quantityColumnIndex);
@@ -59,7 +59,7 @@ public class BookCursorAdapter extends CursorAdapter {
         shopView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Uri currentBookUri = ContentUris.withAppendedId(BookEntry.CONTENT_URI, idColumnIndex);
+                Uri currentBookUri = ContentUris.withAppendedId(BookEntry.CONTENT_URI, bookId);
                 Sale(context, currentBookUri, quantity);
 
 
@@ -69,11 +69,14 @@ public class BookCursorAdapter extends CursorAdapter {
 
     private void Sale(Context context, Uri bookUri, int quantity) {
 
-        int newQuantity = quantity--;
+        if (quantity == 0) {
+            return;
+        }
+          quantity --;
 
 
         ContentValues values = new ContentValues();
-        values.put(BookEntry.COLUMN_QUANTITY, newQuantity);
+        values.put(BookEntry.COLUMN_QUANTITY, quantity);
         context.getContentResolver().update(bookUri, values, null, null);
 
     }
