@@ -16,7 +16,8 @@ import com.example.jasonmitropoulos.jsbookstoreapp.data.BookContract.BookEntry;
 
 public class BookCursorAdapter extends CursorAdapter {
 
-    public BookCursorAdapter(Context context, Cursor c) { super(context, c, 0 /* flags */);
+    public BookCursorAdapter(Context context, Cursor c) {
+        super(context, c, 0 /* flags */);
     }
 
     @Override
@@ -49,7 +50,6 @@ public class BookCursorAdapter extends CursorAdapter {
         String supplierPhone = cursor.getString(supplierPhoneColumnIndex);
 
 
-
         nameTextView.setText(name);
         summaryTextView.setText(price);
         quantityTextView.setText(String.valueOf(quantity));
@@ -72,7 +72,7 @@ public class BookCursorAdapter extends CursorAdapter {
         if (quantity == 0) {
             return;
         }
-          quantity --;
+        quantity--;
 
 
         ContentValues values = new ContentValues();
@@ -81,5 +81,5 @@ public class BookCursorAdapter extends CursorAdapter {
 
     }
 
-    }
+}
 

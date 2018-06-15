@@ -53,10 +53,6 @@ public class BookAddActivity extends AppCompatActivity implements
     private Button mPhone;
 
 
-
-
-
-
     private boolean mBookHasChanged = false;
 
     private View.OnTouchListener mTouchListener = new View.OnTouchListener() {
@@ -112,18 +108,16 @@ public class BookAddActivity extends AppCompatActivity implements
             }
         });
 
-        mPhone = (Button)  findViewById(R.id.phonebutton);
+        mPhone = (Button) findViewById(R.id.phonebutton);
         mPhone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_DIAL);
                 intent.setData(Uri.parse("tel:" + supplierPhone));
                 startActivity(intent);
-                }
+            }
 
         });
-
-
 
 
         mNameEditText.setOnTouchListener(mTouchListener);
@@ -147,9 +141,10 @@ public class BookAddActivity extends AppCompatActivity implements
 
 
         if (TextUtils.isEmpty(nameString) || TextUtils.isEmpty(priceString) ||
-                TextUtils.isEmpty(quantityString) || TextUtils.isEmpty(supplierNameString) || TextUtils.isEmpty(supplierPhoneString) ) {
+                TextUtils.isEmpty(quantityString) || TextUtils.isEmpty(supplierNameString) || TextUtils.isEmpty(supplierPhoneString)) {
             Toast.makeText(this, "You need to enter something!", Toast.LENGTH_SHORT).show();
-            return;}
+            return;
+        }
 
         ContentValues values = new ContentValues();
         values.put(BookEntry.COLUMN_PRODUCT_NAME, nameString);
@@ -157,8 +152,6 @@ public class BookAddActivity extends AppCompatActivity implements
         values.put(BookEntry.COLUMN_QUANTITY, quantityString);
         values.put(BookEntry.COLUMN_SUPPLIER_NAME, supplierNameString);
         values.put(BookEntry.COLUMN_SUPPLIER_PHONE, supplierPhoneString);
-
-
 
 
         if (mCurrentBookUri == null) {
@@ -291,13 +284,10 @@ public class BookAddActivity extends AppCompatActivity implements
 
             String name = cursor.getString(nameColumnIndex);
             String price = cursor.getString(priceColumnIndex);
-            quantity = cursor.getInt(quantityColumnIndex);;
+            quantity = cursor.getInt(quantityColumnIndex);
+            ;
             String supplierName = cursor.getString(supplierNameColumnIndex);
             supplierPhone = cursor.getString(supplierPhoneColumnIndex);
-
-
-
-
 
 
             mNameEditText.setText(name);
@@ -305,8 +295,6 @@ public class BookAddActivity extends AppCompatActivity implements
             mQuantityEditText.setText(Integer.toString(quantity));
             mSupplierNameEditText.setText(supplierName);
             mSupplierPhoneEditText.setText(supplierPhone);
-
-
 
 
         }
@@ -322,7 +310,6 @@ public class BookAddActivity extends AppCompatActivity implements
         mSupplierPhoneEditText.setText("");
 
     }
-
 
 
     private void showUnsavedChangesDialog(
@@ -377,7 +364,6 @@ public class BookAddActivity extends AppCompatActivity implements
 
         finish();
     }
-
 
 
 }

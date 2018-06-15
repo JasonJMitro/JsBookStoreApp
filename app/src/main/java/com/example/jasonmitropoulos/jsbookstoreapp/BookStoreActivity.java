@@ -19,7 +19,7 @@ import android.widget.ListView;
 
 import com.example.jasonmitropoulos.jsbookstoreapp.data.BookContract.BookEntry;
 
-public class BookStoreActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>{
+public class BookStoreActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
     private static final int BOOK_LOADER = 0;
 

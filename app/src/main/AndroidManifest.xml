@@ -10,8 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-        android:name=".BookStoreActivity"
-        android:label="@string/app_name">
+            android:name=".BookStoreActivity"
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,12 +20,13 @@
         </activity>
         <activity
             android:name=".BookAddActivity"
-            android:parentActivityName=".BookStoreActivity" >
+            android:parentActivityName=".BookStoreActivity">
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".BookStoreActivity" />
         </activity>
+
         <provider
             android:name=".data.BookProvider"
             android:authorities="com.example.jasonmitropoulos.jsbookstoreapp"
