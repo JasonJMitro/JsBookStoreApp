@@ -44,9 +44,13 @@ public class BookAddActivity extends AppCompatActivity implements
 
     private int quantity;
 
+    private String supplierPhone;
+
     private Button mAddition;
 
     private Button mSubtraction;
+
+    private Button mPhone;
 
 
 
@@ -107,6 +111,18 @@ public class BookAddActivity extends AppCompatActivity implements
                 mQuantityEditText.setText(valueOf(quantity));
             }
         });
+
+        mPhone = (Button)  findViewById(R.id.phonebutton);
+        mPhone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:" + supplierPhone));
+                startActivity(intent);
+                }
+
+        });
+
 
 
 
@@ -277,7 +293,9 @@ public class BookAddActivity extends AppCompatActivity implements
             String price = cursor.getString(priceColumnIndex);
             quantity = cursor.getInt(quantityColumnIndex);;
             String supplierName = cursor.getString(supplierNameColumnIndex);
-            String supplierPhone = cursor.getString(supplierPhoneColumnIndex);
+            supplierPhone = cursor.getString(supplierPhoneColumnIndex);
+
+
 
 
 
@@ -359,5 +377,7 @@ public class BookAddActivity extends AppCompatActivity implements
 
         finish();
     }
+
+
 
 }
