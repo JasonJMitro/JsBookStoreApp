@@ -177,6 +177,7 @@ public class BookAddActivity extends AppCompatActivity implements
                         Toast.LENGTH_SHORT).show();
             }
         }
+        finish();
     }
 
     @Override
@@ -200,7 +201,7 @@ public class BookAddActivity extends AppCompatActivity implements
         switch (item.getItemId()) {
             case R.id.action_save:
                 saveBook();
-                finish();
+
                 return true;
             case R.id.action_delete:
                 showDeleteConfirmationDialog();
